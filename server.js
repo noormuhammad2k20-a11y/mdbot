@@ -138,7 +138,11 @@ const whatsappPuppeteerArgs = {
     '--no-sandbox',
     '--disable-setuid-sandbox',
     '--disable-dev-shm-usage',
+    '--disable-accelerated-2d-canvas',
+    '--no-first-run',
+    '--no-zygote',
     '--disable-gpu',
+    '--single-process',
   ],
 };
 // Use system Chrome for whatsapp-web.js as well
@@ -265,7 +269,16 @@ async function submitForm(url, clientInput) {
     // Launch a fresh browser instance for isolation
     const launchOptions = {
       headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-accelerated-2d-canvas',
+        '--no-first-run',
+        '--no-zygote',
+        '--disable-gpu',
+        '--single-process',
+      ],
     };
     if (CHROME_EXECUTABLE) launchOptions.executablePath = CHROME_EXECUTABLE;
 
